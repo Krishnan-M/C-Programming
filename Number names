@@ -1,0 +1,121 @@
+#include <stdio.h>
+int a,b,c,d,f,g;
+int ones();
+int teens();
+int tens();
+int huns();
+int thou();
+int given();
+int main()
+{
+    printf("Enter a 4 digit number : ");
+    scanf("%d",&a);
+    if(a==0)
+    printf("Zero");
+    else
+    {
+        b=a%10;
+        d=(a-b)%100;        //d=actual number - units place
+                            //printf("%d",d);
+        g=(a/1000)*1000;    //actual number /1000 for getting thousand place number and x thousand for getting the value in thousand format
+        f=a-d-b-g;          // actual number - 1000's place - units- tens for getting hundreds place value
+        c=a-g-f;            //actual number - thousand - hundred for teen values verification
+        given();            //printf("a=%d b=%d d=%d f=%d g=%d c=%d",a,b,d,f,g,c);
+        thou();
+        if(d==0&&c==0&&b==0||f==0)
+        huns();
+        else
+        {
+            huns();
+            printf(" and");
+        }
+        if(c<=19 && c>=11)
+        teens();
+        else{
+        tens();
+        ones();
+        }
+    }
+}
+int ones()
+{
+   switch(b)
+   {
+       case 1:printf(" one");break;
+       case 2:printf(" two");break;
+       case 3:printf(" three");break;
+       case 4:printf(" four");break;
+       case 5:printf(" five");break;
+       case 6:printf(" six");break;
+       case 7:printf(" seven");break;
+       case 8:printf(" eight");break;
+       case 9:printf(" nine");break;
+   }
+}
+int teens()
+{
+    switch(c)
+    {
+        case 11:printf(" eleven");break;
+        case 12:printf(" twelve");break;
+        case 13:printf(" thirteen");break;
+        case 14:printf(" fourteen");break;
+        case 15:printf(" fivteen");break;
+        case 16:printf(" sixteen");break;
+        case 17:printf(" seventeen");break;
+        case 18:printf(" eighteen");break;
+        case 19:printf(" nineteen");break;
+    }
+}
+int tens()
+{
+    switch(d)
+    {
+        case 10:printf(" ten");break;
+        case 20:printf(" twenty");break;
+        case 30:printf(" thirty");break;
+        case 40:printf(" fourty");break;
+        case 50:printf(" fifty");break;
+        case 60:printf(" sixty");break;
+        case 70:printf(" seventy");break;
+        case 80:printf(" eighty");break;
+        case 90:printf(" ninty");break;
+    }
+}
+int huns()
+{
+    switch(f)
+    {
+        case 100: printf(" one hundred");break;
+        case 200: printf(" two hundred");break;
+        case 300: printf(" three hundred");break;
+        case 400: printf(" four hundred");break;
+        case 500: printf(" five hundred");break;
+        case 600: printf(" six hundred");break;
+        case 700: printf(" seven hundred");break;
+        case 800: printf(" eight hundred");break;
+        case 900: printf(" nine hundred");break;
+    }
+}
+int thou()
+{
+    switch(g)
+    {
+        case 1000:printf(" thousand");break;
+        case 2000:printf(" two thousand");break;
+        case 3000:printf(" three thousand");break;
+        case 4000:printf(" four thousand");break;
+        case 5000:printf(" five thousand");break;
+        case 6000:printf(" six thousand");break;
+        case 7000:printf(" seven thousand");break;
+        case 8000:printf(" eight thousand");break;
+        case 9000:printf(" nine thousand");break;
+    }
+}
+int given()
+{
+    printf("The given number %d in words : \n",a);
+}
+
+
+
